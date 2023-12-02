@@ -8,7 +8,10 @@ import { ApiFeature } from "../../utils/apiFeature.js"
 
 const addCategory = catchAsyncError(async (req, res, next) => {
     req.body.user=req.user._id
-req.body.img =req.file.filename
+    if(req.file.filename){
+        req.body.img =req.file.filename
+    }
+
 req.body.slug =slugify(req.body.name)
     const categories = await categoryModel.insertMany(req.body)
     res.json({ message: "success", categories })
