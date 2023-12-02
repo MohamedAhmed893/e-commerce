@@ -1,7 +1,8 @@
 import Joi from 'joi'
 
 export const createsubcategorySchema =Joi.object({
-    name:Joi.string().min(3).max(20).required() 
+    name:Joi.string().min(3).max(20).required() ,
+    category:Joi.string().hex().length(24).required()
 })
 export const updatesubcategorySchema =Joi.object({
     name:Joi.string().min(3).max(20).required() , 
